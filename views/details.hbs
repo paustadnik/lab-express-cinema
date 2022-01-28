@@ -1,1 +1,25 @@
-<h1>Movie details</h1>
+<div>
+    <button  type="submit" class="checkMoviesBtn"><a href="/movies">Go back</a></button>
+    <div>
+        <img src="{{movieFromDB.image}}" alt="{{movieFromDB.title}}">
+    </div>
+    <div>
+        <h2>{{movieFromDB.title}}</h2>
+        <br>
+        <h2>Director: {{movieFromDB.director}}</h2>
+        <br>
+        <h3>Stars</h3>
+        <ul>
+            {{#each movieFromDB.stars}}
+            <li>{{this}}</li>
+            {{/each}}
+        </ul>
+        <p>{{movieFromDB.description}}</p>
+        <ul>
+            {{#each movieFromDB.showtimes}}
+            <li>{{this}} |</li>
+            {{/each}}
+        </ul>
+        
+    </div>
+</div>

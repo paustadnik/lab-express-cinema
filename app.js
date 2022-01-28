@@ -1,6 +1,8 @@
 // ℹ️ Gets access to environment variables/settings
 // https://www.npmjs.com/package/dotenv
 require('dotenv/config');
+const bodyParser = require('body-parser')
+
 
 // ℹ️ Connects to the database
 require('./db');
@@ -120,20 +122,15 @@ app.use('/', index);
 
 app.get('/movies', async (req, res, next) => {
     const movies = await Movie.find()
-    console.log(movies)
+    //console.log(movies)
     res.render('movies', { movies })
-
 })
 
-app.get('movie/:id', async (req, res, next) => {
-    const movie = req.body
+app.get('/movie/:id', async (req, res, next) => {
     const id = req.params.id
     const movieFromDB = await Movie.findById(id)
-    console.log(movieFromDB)
-
+    res.render('details', {movieFromDB})
 })
-
-
 
 
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
